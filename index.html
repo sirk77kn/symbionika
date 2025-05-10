@@ -1,0 +1,98 @@
+from zipfile import ZipFile
+from pathlib import Path
+import os
+
+# Prepare directory structure
+base_dir = Path("/mnt/data/symbionika-site")
+images_dir = base_dir / "images"
+icons_dir = base_dir / "icons"
+base_dir.mkdir(parents=True, exist_ok=True)
+images_dir.mkdir(parents=True, exist_ok=True)
+icons_dir.mkdir(parents=True, exist_ok=True)
+
+# Save the HTML file
+html_content = """<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbionika – Produkty Nabiotech Agro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #00592e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      background-color: white;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+    h2 {
+      color: #00592e;
+    }
+    .product {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      background-color: #fafafa;
+    }
+    .icons img, .effects img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+    .effects {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .effects div {
+      flex: 1 1 45%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Symbionika</h1>
+    <p>Naturalne rozwiązania dla rolnictwa – Ploner, Viveko, Bio Remedy</p>
+  </header>
+  <main>
+    <!-- Content omitted for brevity -->
+  </main>
+</body>
+</html>"""
+
+html_path = base_dir / "index.html"
+html_path.write_text(html_content, encoding="utf-8")
+
+# Add placeholder images/icons
+for name in ["before-ploner.jpg", "after-ploner.jpg", "before-viveko.jpg", "after-viveko.jpg", "before-bioremedy.jpg", "after-bioremedy.jpg"]:
+    (images_dir / name).write_text("Placeholder for " + name)
+
+for name in ["spray.png", "mix.png", "fertilizer.png", "spray-leaf.png", "flower.png", "growth.png", "shield.png", "leaf.png"]:
+    (icons_dir / name).write_text("Placeholder for " + name)
+
+# Create a zip file
+zip_path = "/mnt/data/symbionika_site_package.zip"
+with ZipFile(zip_path, 'w') as zipf:
+    for folder, _, files in os.walk(base_dir):
+        for file in files:
+            file_path = Path(folder) / file
+            zipf.write(file_path, arcname=file_path.relative_to(base_dir))
+
+zip_path
