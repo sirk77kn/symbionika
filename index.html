@@ -1,109 +1,395 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Symbionika – Naturalne technologie dla gleby i roślin</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      background-color: #f3f2ea;
-      color: #333;
-      margin: 0;
-    }
-    header {
-      background: #e7efea;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #2e7d32;
-    }
-    .motto {
-      font-style: italic;
-      color: #555;
-    }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 1rem;
-    }
-    .product {
-      background: #fff;
-      border-radius: 5px;
-      padding: 1rem 1.5rem;
-      margin: 2rem 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .product h2 {
-      color: #2e7d32;
-    }
-    .before-after {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-    .before-after div {
-      flex: 1;
-      text-align: center;
-    }
-    .before-after img {
-      max-width: 100%;
-      border-radius: 4px;
-    }
-    .caption {
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .icon {
-      width: 20px;
-      vertical-align: middle;
-      margin-right: 0.5rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbionika - Innowacyjne Rozwiązania</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            position: relative; /* Added for potential absolute positioning of images */
+            overflow: hidden; /* Hide overflowing images */
+        }
+
+         .header-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3; /* Make it semi-transparent */
+            z-index: 1; /* Place behind text */
+        }
+
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            position: relative;
+            z-index: 2; /* Place text above image */
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.2em;
+            position: relative;
+            z-index: 2; /* Place text above image */
+        }
+
+        .section {
+            background-color: #fff;
+            margin: 20px 0;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2em;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background-color: #bdc3c7; /* Placeholder color */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        .about-text {
+            max-width: 800px;
+            text-align: center;
+        }
+
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            background-color: #bdc3c7; /* Placeholder color */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden; /* Ensure image fits within bounds */
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area while maintaining aspect ratio */
+            display: block;
+        }
+
+        .product-content {
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .product-content h3 {
+            margin-top: 0;
+            color: #3498db;
+            font-size: 1.5em;
+        }
+
+        .product-content p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px; /* Add space below paragraphs */
+        }
+
+        .product-content ul {
+            text-align: left;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .product-content ul li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        /* Alternating layout for products */
+        .product:nth-child(even) {
+            flex-direction: column-reverse; /* Image below content on even products */
+        }
+
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 20px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+             .about-content {
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                text-align: left;
+             }
+
+             .about-image {
+                margin-bottom: 0;
+                margin-right: 40px;
+             }
+
+             .about-text {
+                text-align: left;
+             }
+
+
+            .product {
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                text-align: left;
+            }
+
+            .product:nth-child(even) {
+                flex-direction: row-reverse; /* Image on the left for even products */
+            }
+
+            .product-image {
+                margin-bottom: 0;
+                margin-right: 40px;
+            }
+
+             .product:nth-child(even) .product-image {
+                margin-right: 0;
+                margin-left: 40px;
+            }
+
+            .product-content {
+                text-align: left;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Symbionika</h1>
-    <p class="motto">Naturalne technologie dla gleby i roślin</p>
-  </header>
-  <div class="container">
-    <section class="product">
-      <h2>Ploner</h2>
-      <p><img src="icons/fertilizer.png" class="icon"> Przeznaczony do upraw polowych. Poprawia żyzność gleby.</p>
-      <p><img src="icons/dosage.png" class="icon"> 200 kg/ha – rozsiewać równomiernie przed siewem lub po zbiorach.</p>
-      <div class="before-after">
-        <div>
-          <img src="images/ploner_effect.png" alt="Efekt działania Ploner">
-          <p class="caption">Przed i po zastosowaniu</p>
+    <header>
+        <img src="https://placehold.co/1200x400/2c3e50/ecf0f1?text=Symbionika+Header+Image" alt="Symbionika Header Image" class="header-image">
+        <div class="container">
+            <h1>Symbionika</h1>
+            <p>Innowacyjne rozwiązania dla przyszłości rolnictwa</p>
         </div>
-      </div>
-    </section>
-    <section class="product">
-      <h2>Viveko</h2>
-      <p><img src="icons/fertilizer.png" class="icon"> Do warzyw i sadów. Wspiera wzrost i odporność.</p>
-      <p><img src="icons/dosage.png" class="icon"> 50 ml / 10 l wody – podlewać co 2 tygodnie.</p>
-      <div class="before-after">
-        <div>
-          <img src="images/viveko_effect.png" alt="Efekt działania Viveko">
-          <p class="caption">Przed i po zastosowaniu</p>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2>O Nas</h2>
+            <div class="about-content">
+                 <div class="about-image">
+                    <img src="https://placehold.co/500x300/bdc3c7/333?text=O+Nas+Obraz" alt="O Nas Obraz">
+                </div>
+                <div class="about-text">
+                    <p>
+                        Witamy w Symbionika – dystrybutorze nowoczesnych i bezpiecznych produktów bioinformacyjnych dla rolnictwa. Nasza misja to dostarczanie przełomowych rozwiązań, które wspierają naturalny rozwój roślin, regenerację gleby, stymulację wzrostu oraz zwiększanie wydajności upraw w sposób przyjazny dla środowiska. Koncentrujemy się na produktach, które pozwalają na znaczące zmniejszenie stosowania syntetycznych środków ochrony roślin, wspierając rolnictwo zrównoważone i ekologiczne.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    <section class="product">
-      <h2>Bio Remedy</h2>
-      <p><img src="icons/fertilizer.png" class="icon"> Regeneracja zdegradowanej gleby.</p>
-      <p><img src="icons/dosage.png" class="icon"> 100 g / 10 m² – wymieszać z glebą. Stosować wiosną i jesienią.</p>
-      <div class="before-after">
-        <div>
-          <img src="images/bioremedy_effect.png" alt="Efekt działania Bio Remedy">
-          <p class="caption">Przed i po zastosowaniu</p>
+
+    <section class="section">
+        <div class="container">
+            <h2>Nasze Produkty</h2>
+
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://placehold.co/400x250/3498db/ffffff?text=VIVEKO" alt="Obraz Produktu VIVEKO">
+                </div>
+                <div class="product-content">
+                    <h3>VIVEKO: Stymulacja Rozwoju Roślin</h3>
+                    <p>
+                        Viveko to nowoczesny preparat bioinformacyjny do zaawansowanej stymulacji rozwoju roślin na każdym etapie życia. Działa na poziomie informacyjnym, aktywując naturalne procesy wzrostowe.
+                    </p>
+                    <h4>Kluczowe Korzyści:</h4>
+                    <ul>
+                        <li>Stymulacja Wzrostu: Szybszy i bardziej dynamiczny rozwój roślin.</li>
+                        <li>Większa Wydajność: Zwiększenie ilości i poprawa jakości plonów.</li>
+                        <li>Lepsza Kondycja Roślin: Wzrost odporności na stresy.</li>
+                        <li>Wszechstronne Zastosowanie: Skuteczny w uprawach polowych, warzywniczych i sadowniczych.</li>
+                        <li>Wsparcie dla Rolnictwa Ekologicznego: Zgodny z zasadami produkcji ekologicznej.</li>
+                    </ul>
+                    <h4>Sposób Użycia i Dawkowanie:</h4>
+                    <p>
+                        Aplikacja poprzez oprysk dolistny lub systemy nawadniające. Zalecane w kluczowych fazach rozwojowych.
+                    </p>
+                    <p>
+                        **Szczegółowe informacje dotyczące dawkowania i stosowania znajdują się na etykiecie produktu oraz są dostępne bezpośrednio u dystrybutora SYMBIONIKA.**
+                    </p>
+                     <h4>Informacje Dodatkowe</h4>
+                    <p>
+                        **Przechowywanie:** W oryginalnym, szczelnie zamkniętym opakowaniu, w miejscu chłodnym, suchym i zacienionym. Chronić przed dziećmi i zwierzętami.
+                    </p>
+                    <p>
+                        **Kompatybilność z Rolnictwem Ekologicznym:** Doskonale wpisuje się w założenia rolnictwa zrównoważonego i ekologicznego.
+                    </p>
+                </div>
+            </div>
+
+            <div class="product">
+                 <div class="product-image">
+                    <img src="https://placehold.co/400x250/2ecc71/ffffff?text=PLONER" alt="Obraz Produktu PLONER">
+                </div>
+                <div class="product-content">
+                    <h3>PLONER: Fundament Zdrowej Gleby</h3>
+                    <p>
+                        Ploner to specjalistyczny preparat bioinformacyjny poprawiający jakość gleby. Działa na strukturę, aktywność biologiczną i żyzność gleby, wspierając naturalne procesy glebowe.
+                    </p>
+                     <h4>Kluczowe Korzyści:</h4>
+                    <ul>
+                        <li>Poprawa Struktury Gleby: Lepsze napowietrzenie i gospodarka wodna.</li>
+                        <li>Zwiększenie Żyzności: Stymulacja pożytecznych mikroorganizmów glebowych.</li>
+                        <li>Lepsze Przyswajanie Składników Pokarmowych: Ułatwienie dostępu roślin do niezbędnych elementów.</li>
+                        <li>Zdrowsze Korzenie: Tworzenie korzystnych warunków dla rozwoju systemu korzeniowego.</li>
+                        <li>Wszechstronność: Skuteczny w różnych typach gleb i upraw.</li>
+                        <li>Krok ku Rolnictwu Regeneratywnemu: Wspiera odbudowę i utrzymanie zdrowia gleby.</li>
+                    </ul>
+                     <h4>Sposób Użycia i Dawkowanie:</h4>
+                    <p>
+                        Aplikacja doglebowa: przedsiewnie, przed sadzeniem lub pogłównie.
+                    </p>
+                     <p>
+                        **Optymalne dawkowanie zależy od wielu czynników. Szczegółowe informacje znajdują się na etykiecie produktu oraz są dostępne bezpośrednio u dystrybutora SYMBIONIKA.**
+                    </p>
+                     <h4>Informacje Dodatkowe</h4>
+                    <p>
+                        **Przechowywanie:** W oryginalnym, szczelnie zamkniętym opakowaniu, w miejscu chłodnym, suchym i zacienionym. Chronić przed dziećmi i zwierzętami.
+                    </p>
+                    <p>
+                        **Kompatybilność z Rolnictwem Ekologicznym:** W pełni zgodny z zasadami rolnictwa zrównoważonego i ekologicznego.
+                    </p>
+                </div>
+            </div>
+
+            <div class="product">
+                 <div class="product-image">
+                    <img src="https://placehold.co/400x250/e74c3c/ffffff?text=BIO+REMEDY" alt="Obraz Produktu BIO REMEDY">
+                </div>
+                <div class="product-content">
+                    <h3>BIO REMEDY: Naturalna Ochrona Roślin</h3>
+                    <p>
+                        Bio Remedy to innowacyjny preparat bioinformacyjny zapewniający roślinom naturalną ochronę przed stresami biotycznymi. Wspiera zdrowie roślin bez użycia sztucznych chemikaliów.
+                    </p>
+                     <h4>Kluczowe Korzyści:</h4>
+                    <ul>
+                        <li>Naturalna Ochrona: Wspiera wrodzone mechanizmy obronne roślin.</li>
+                        <li>Redukcja Chemikaliów: Umożliwia ograniczenie stosowania syntetycznych pestycydów.</li>
+                        <li>Bezpieczniejsze Produkty Rolne: Przyczynia się do uprawy żywności o niższej zawartości pozostałości chemicznych.</li>
+                        <li>Ochrona Środowiska: Minimalizuje negatywny wpływ na ekosystemy.</li>
+                        <li>Wsparcie dla Produkcji Ekologicznej: Idealne rozwiązanie dla gospodarstw ekologicznych i integrowanych.</li>
+                    </ul>
+                    <h4>Sposób Użycia i Dawkowanie:</h4>
+                    <p>
+                        Zazwyczaj stosowany w formie oprysku, zapobiegawczo lub interwencyjnie.
+                    </p>
+                    <p>
+                        **Precyzyjne stosowanie, dawkowanie i spektrum działania wymagają kontaktu z dystrybutorem SYMBIONIKA.**
+                    </p>
+                     <h4>Informacje Dodatkowe</h4>
+                    <p>
+                        **Przechowywanie:** W oryginalnym, szczelnie zamkniętym opakowaniu, w miejscu chłodnym, suchym i zacienionym. Chronić przed dziećmi i zwierzętami.
+                    </p>
+                     <p>
+                        **Okres Karencji/Prewencji:** Informacje kluczowe dla bezpiecznego stosowania. Należy uzyskać od dystrybutora i przestrzegać zaleceń.
+                    </p>
+                    <p>
+                        **Kompatybilność z Rolnictwem Ekologicznym:** Szczególnie polecany do strategii ochrony w rolnictwie ekologicznym i integrowanym.
+                    </p>
+                </div>
+            </div>
+
         </div>
-      </div>
     </section>
-  </div>
+
+     <section class="section">
+        <div class="container">
+            <h2>Producent i Kontakt</h2>
+            <p>
+                SYMBIONIKA – Dystrybutor innowacyjnych rozwiązań dla nowoczesnego rolnictwa. Skontaktuj się z nami, aby dowiedzieć się więcej o naszych produktach! Nasi specjaliści chętnie odpowiedzą na wszystkie pytania.
+            </p>
+            <p>
+                **Dystrybutor:** SYMBIONIKA
+            </p>
+            <p>
+                **Adresy:** (Proszę uzupełnić adresy: Siedziba, Produkcja/Magazyn/Wysyłki, Laboratorium)
+            </p>
+             <p>
+                **Kontakt:** (Proszę uzupełnić dane kontaktowe: Telefon, Email, Strona internetowa)
+            </p>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Symbionika. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
 </body>
 </html>
